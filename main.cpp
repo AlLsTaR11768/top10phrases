@@ -26,14 +26,16 @@ int main()
     {
         if (!(content[i] == '.') && !(content[i] == ',') && !(content[i] == ';') && !(content[i] == '!'))
         {
-            parsedLine += content[i]; //APPEND chars to parsed line
+            char temp = tolower(content[i]);
+            parsedLine += temp; //APPEND chars to parsed line
         }
         else
         {
             parsedLine.erase(remove(parsedLine.begin(), parsedLine.end(), '"'), parsedLine.end()); //Remove "" from the line
-            parsedLine += content[i];                                                              //ADD chars to parsed phrases
-            phrases.push_back(parsedLine);                                                         //PUSH to vector of phrases
-            parsedLine = "";                                                                       //CLEAR the string
+            parsedLine += content[i];
+            parsedLine += '\n';            //ADD chars to parsed phrases
+            phrases.push_back(parsedLine); //PUSH to vector of phrases
+            parsedLine = "";               //CLEAR the string
             while (content[i + 1] == ' ')
             {
                 i++;
@@ -42,21 +44,20 @@ int main()
     }
 
     string word = "";
-    cout << phrases[0] << endl;
+    int words = 0;
 
-    for (int i = 0; i < phrases[0].length(); i++)
+    cout << phrases[0];
+
+    for (int i = 0; i < phrases[0].size(); i++)
     {
-        if (phrases[0].at(i) == ' ')
-        {
-            word += ' ';
+        if (phrases[0].at(i) != '\n' && !ispunct(phrases[0].at(i)))
             word += phrases[0].at(i);
-            cout << word << endl;
-        }
 
-        if (isalpha(phrases[0].at(i)))
+        if (isspace(phrases[0].at(i)) || phrases[0].at(i) == '\n')
         {
-
-            word += phrases[0].at(i);
+            words++;
+            cout << word;                     //HERE IS WHERE WE ADD TO HASHMAP
+            cout << " --- " << words << endl; //DOOOO HASH MAP STUFF HEREEEEE!
         }
     }
 
