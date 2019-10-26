@@ -41,11 +41,23 @@ int main()
         }
     }
 
-    int lines = 0;
-    for (string i : phrases)
+    string word = "";
+    cout << phrases[0] << endl;
+
+    for (int i = 0; i < phrases[0].length(); i++)
     {
-        lines++;
-        cout << i << endl;
+        if (phrases[0].at(i) == ' ')
+        {
+            word += ' ';
+            word += phrases[0].at(i);
+            cout << word << endl;
+        }
+
+        if (isalpha(phrases[0].at(i)))
+        {
+
+            word += phrases[0].at(i);
+        }
     }
 
     huckFile.close();
