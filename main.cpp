@@ -56,8 +56,8 @@ int main()
         if (isspace(phrases[0].at(i)) || phrases[0].at(i) == '\n')
         {
             words++;
-            cout << word;                     //HERE IS WHERE WE ADD TO HASHMAP
-            cout << " --- " << words << endl; //DOOOO HASH MAP STUFF HEREEEEE!
+            cout << "Words: " << word;                    //HERE IS WHERE WE ADD TO HASHMAP
+            cout << " --- Word Count: " << words << endl; //DOOOO HASH MAP STUFF HEREEEEE!
         }
     }
 
